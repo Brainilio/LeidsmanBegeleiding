@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class PagesController extends Controller //elke controller moet een controller extenden
 {
     public function index() {
-        $title = 'Welcome to Homepage!';
+        $title = 'Welkom bij Leidsman Begeleiding!';
         return view('pages.index')->with('title', $title);
     }
 
@@ -17,7 +17,13 @@ class PagesController extends Controller //elke controller moet een controller e
     }
 
     public function services() {
-        return view('pages.services');
+        $title = 'This is what we have to offer!';
+        $data = array(
+          'services' => ['Rekenen', 'Wiskunde begeleiding', 'Examen voorbereidingen']
+
+        );
+
+        return view('pages.services')->with('title', $title)->with($data);
     }
 }
 
