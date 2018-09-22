@@ -7,6 +7,7 @@
         <a class="p-2 text-dark" href="/about">About</a>
         <a class="p-2 text-dark" href="/services">Services</a>
         <a class="p-2 text-dark" href="/posts">Posts</a>
+        <a class="p2 text-dark" href="/posts/create">Create Post</a>
 
     </nav>
     <a class="btn btn-outline-primary" href="/">Sign up</a>
