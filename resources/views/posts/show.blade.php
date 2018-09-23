@@ -4,7 +4,7 @@
 
 <a href="/posts" class="btn btn-default">Go back</a>
 <h1>{{$post->title}}</h1>
-
+<img style="width:100px height:500px" src="/storage/cover_images/{{$post->cover_image}}">
     <div class="well">
         <h3><a href="/posts/{{$post->id}}">{{$post->title }}</a></h3>
         <small>Written on {{$post->created_at}} and by {{$post->user->name}}</small>
