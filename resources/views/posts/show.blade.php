@@ -7,7 +7,7 @@
 
     <div class="well">
         <h3><a href="/posts/{{$post->id}}">{{$post->title }}</a></h3>
-        <small>Written on {{$post->created_at}}</small>
+        <small>Written on {{$post->created_at}} and by {{$post->user_id}}</small>
         <div>
                 {{$post->body}}
         </div>

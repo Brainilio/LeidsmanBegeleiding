@@ -24,3 +24,14 @@ Route::resource('posts', 'PostsController');
    //     Route::get('/users/{id}', function($id) {
     //        return 'This is user ' .$id;
       //  });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
