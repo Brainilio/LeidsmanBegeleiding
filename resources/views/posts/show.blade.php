@@ -7,15 +7,21 @@
 
     <div class="well">
         <h3><a href="/posts/{{$post->id}}">{{$post->title }}</a></h3>
-        <small>Written on {{$post->created_at}} and by {{$post->user_id}}</small>
+        <small>Written on {{$post->created_at}} and by {{$post->user->name}}</small>
         <div>
                 {{$post->body}}
         </div>
     </div>
+
+   @auth
+   @if(Auth::user()->id == $post->user_id)
     <a href="/posts/{{$post->id}}/edit" class="btn btn-default">Edit post</a>
 
     {{Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])}}
         {{Form::hidden('_method', 'DELETE')}}
         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
     {{Form::close()}}
+    @endif
+    @endauth
+
     @endsection

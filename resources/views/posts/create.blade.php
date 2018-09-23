@@ -2,7 +2,7 @@
 
 @section('content')
 
-<a href="/posts" class="btn btn-default">Go back</a>
+<a href="/home" class="btn btn-default">Go back</a>
 <h3>Create Post</h3>
 
 {!! Form::open(['action' => 'PostsController@store', 'method' => 'POST']) !!}

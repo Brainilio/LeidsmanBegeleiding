@@ -19,7 +19,7 @@
                     <li class="nav-item">  <a class="nav-link" href="/about">About</a>              </li>
                     <li class="nav-item">   <a class="nav-link" href="/services">Services</a>        </li>
                     <li class="nav-item">  <a class="nav-link" href="/posts">Posts</a>              </li>
-                    <li class="nav-item">   <a class="nav-link" href="/posts/create">Create Post</a> </li>
+
                </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
