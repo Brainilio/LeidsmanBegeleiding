@@ -30,4 +30,11 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany('App\Post');
     }
+
+    public function isAdmin()
+{
+    return $this->admin ? 1 : 0; // this looks for an admin column in your users table
+}
+
+
 }

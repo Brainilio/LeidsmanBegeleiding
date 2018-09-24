@@ -13,7 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
+                    @if(Auth::user()->admin == 1)
                     <a href="/posts/create" class="btn btn-primary">Maak nieuw pakket aan!</a>
+                    @endif
+
                     <h3>Jouw pakketten</h3>
                     @if(count($posts) > 0)
                     <table class="table table-striped">

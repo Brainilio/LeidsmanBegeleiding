@@ -9,7 +9,15 @@ class PostsController extends Controller
 {
 
 
+public function handle($request, Closure $next)
+    {
+        if ( Auth::check() && Auth::user()->isAdmin() )
+        {
+            return $next($request);
+        }
 
+        return redirect('home');
+    }
 
 
     public function __construct() {
