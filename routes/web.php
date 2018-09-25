@@ -17,6 +17,8 @@ Route::get('/about', 'PagesController@about');
 
 Route::get('/services', 'PagesController@services');
 
+Route::get('/dashboard/users', 'PagesController@userlist');
+
 Route::resource('posts', 'PostsController');
 
 

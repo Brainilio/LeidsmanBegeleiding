@@ -4,25 +4,15 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Post;
-
+use App\User;
 class PostsController extends Controller
 {
-
-
-public function handle($request, Closure $next)
-    {
-        if ( Auth::check() && Auth::user()->isAdmin() )
-        {
-            return $next($request);
-        }
-
-        return redirect('home');
-    }
 
 
     public function __construct() {
         $this->middleware('auth')->except(['index', 'show']);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,6 +32,12 @@ public function handle($request, Closure $next)
      */
     public function create()
     {
+
+        if(auth()->user()->admin !== 1) {
+            return redirect('/posts')->with('error', 'Unauthorized Page');
+        }
+
+
         return view('posts.create');
     }
 
@@ -107,6 +103,13 @@ public function handle($request, Closure $next)
      */
     public function edit($id)
     {
+
+
+
+        if(auth()->user()->admin !== 1) {
+            return redirect('/posts')->with('error', 'Unauthorized Page');
+        }
+
         $post =  Post::find($id);
 
         if(auth()->user()->id !== $post->user_id) {
@@ -163,6 +166,10 @@ public function handle($request, Closure $next)
     public function destroy($id)
     {
         $post = Post::find($id);
+
+        if(auth()->user()->admin !== 1) {
+            return redirect('/posts')->with('error', 'Unauthorized Page');
+        }
 
         if(auth()->user()->id !== $post->user_id) {
             return redirect('/posts')->with('error', 'Unauthorized Page');

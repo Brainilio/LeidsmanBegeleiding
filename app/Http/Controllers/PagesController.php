@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class PagesController extends Controller //elke controller moet een controller extenden
 {
@@ -24,6 +25,12 @@ class PagesController extends Controller //elke controller moet een controller e
         );
 
         return view('pages.services')->with('title', $title)->with($data);
+    }
+
+    public function userlist() {
+        $users = User::all();
+
+        return view('dashboard.users')->with('users', $users);
     }
 }
 
