@@ -8,7 +8,7 @@
                 <div class="card-header"><a href="/home">Dashboard<a></div>
 
                     @if(Auth::user()->admin == 1)
-                    <div class="card-header"><a href="/dashboard/users">Gebruikers<a></div>
+                    <div class="card-header"><a href="/home/users">Gebruikers<a></div>
                         @endif
 
                 <div class="card-body">
