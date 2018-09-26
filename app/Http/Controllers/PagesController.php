@@ -30,7 +30,10 @@ class PagesController extends Controller //elke controller moet een controller e
     public function userlist() {
         $users = User::all();
 
-        return view('dashboard.users')->with('users', $users);
+        if(auth()->user()->admin !== 1) {
+            return redirect('/home')->with('error', 'Niets gevonden!');
+        }
+        return view('home.users')->with('users', $users);
     }
 }
 

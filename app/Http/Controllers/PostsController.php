@@ -83,6 +83,16 @@ class PostsController extends Controller
 
     }
 
+    public function buy($id) {
+
+        $post = Post::find($id);
+        $post_user = auth()->user()->bought;
+
+        $post->$post_user;
+        $post->save();
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -171,14 +181,10 @@ class PostsController extends Controller
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
 
-        if(auth()->user()->id !== $post->user_id) {
-            return redirect('/posts')->with('error', 'Unauthorized Page');
-        }
         if($post->cover_image != 'noimage.jpg'){
             //Delete Image from folder if its deleted
             Storage::delete('public/cover_images/'.$post->cover_image);
         }
-
 
         $post->delete();
         return redirect('/posts')->with('success', 'Post Removed');

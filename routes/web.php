@@ -17,7 +17,7 @@ Route::get('/about', 'PagesController@about');
 
 Route::get('/services', 'PagesController@services');
 
-Route::get('/dashboard/users', 'PagesController@userlist');
+Route::get('/home/users', 'PagesController@userlist');
 
 Route::resource('posts', 'PostsController');
 
@@ -40,9 +40,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
-    return "this page requires that you be logged in and an Admin";
-}]);
 
 
 
