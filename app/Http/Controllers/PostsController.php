@@ -34,7 +34,7 @@ class PostsController extends Controller
     {
 
         if(auth()->user()->admin !== 1) {
-            return redirect('/posts')->with('error', 'Unauthorized Page');
+            return redirect('/posts')->with('error', 'Niets gevonden!');
         }
 
 
