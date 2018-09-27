@@ -83,16 +83,6 @@ class PostsController extends Controller
 
     }
 
-    public function buy($id) {
-
-        $post = Post::find($id);
-        $post_user = auth()->user()->bought;
-
-        $post->$post_user;
-        $post->save();
-
-    }
-
     /**
      * Display the specified resource.
      *
@@ -162,6 +152,7 @@ class PostsController extends Controller
         if($request->hasFile('cover_image')) {
             $post->cover_image = $fileNameToStore;
         }
+
         $post->save();
 
         return redirect('/posts')->with('success', 'Post Updated');

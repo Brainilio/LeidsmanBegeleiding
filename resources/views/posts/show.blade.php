@@ -5,7 +5,7 @@
 <a href="/posts" class="btn btn-default">Go back</a>
 <h1>{{$post->title}}</h1>
 @auth
-{{Form::open(['action' => ['PostsController@store', $post->id], 'method' => 'POST', 'class' => 'float-right'])}}
+{{Form::open(['action' => ['PagesController@buy', $post->id], 'method' => 'POST', 'class' => 'float-right'])}}
 {{Form::submit('Buy', ['class' => 'btn btn-success'])}}
 {{Form::close()}}
 @endauth

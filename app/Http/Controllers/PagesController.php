@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Post;
 
 class PagesController extends Controller //elke controller moet een controller extenden
 {
@@ -33,7 +34,17 @@ class PagesController extends Controller //elke controller moet een controller e
         if(auth()->user()->admin !== 1) {
             return redirect('/home')->with('error', 'Niets gevonden!');
         }
+
         return view('home.users')->with('users', $users);
+    }
+
+
+    public function buy($id) {
+
+        $post = Post::find($id);
+
+        return redirect('/posts')->with('success', $post);
+
     }
 }
 
