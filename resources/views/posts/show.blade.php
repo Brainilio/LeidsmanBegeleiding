@@ -5,10 +5,16 @@
 <a href="/posts" class="btn btn-default">Go back</a>
 <h1>{{$post->title}}</h1>
 @auth
-{{Form::open(['action' => ['PagesController@buy', $post->id], 'method' => 'POST', 'class' => 'float-right'])}}
-{{Form::hidden('_method', 'PUT')}}
+{{Form::open(['action' => ['BuyController@buy'], 'method' => 'POST', 'class' => 'float-right'])}}
+{{Form::hidden('id', $post->id)}}
 {{Form::submit('Buy', ['class' => 'btn btn-success'])}}
 {{Form::close()}}
+
+
+
+
+
+
 @endauth
 <img style="width:100px height:500px" src="/storage/cover_images/{{$post->cover_image}}">
     <div class="well">
