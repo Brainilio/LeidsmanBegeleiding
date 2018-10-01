@@ -19,7 +19,7 @@ Route::get('/services', 'PagesController@services');
 
 Route::get('/home/users', 'PagesController@userlist');
 
-Route::post('/', 'PagesController@buy');
+Route::put('/', 'PagesController@buy');
 
 Route::resource('posts', 'PostsController');
 

@@ -39,7 +39,15 @@ class PagesController extends Controller //elke controller moet een controller e
     }
 
 
-    public function buy($id) {
+
+
+    public function buy(Request $request, $id) {
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+            'cover_image' => 'image|nullable|max:1999'
+
+        ]);
 
         $post = Post::find($id);
 

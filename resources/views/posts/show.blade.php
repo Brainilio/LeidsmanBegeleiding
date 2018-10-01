@@ -6,6 +6,7 @@
 <h1>{{$post->title}}</h1>
 @auth
 {{Form::open(['action' => ['PagesController@buy', $post->id], 'method' => 'POST', 'class' => 'float-right'])}}
+{{Form::hidden('_method', 'PUT')}}
 {{Form::submit('Buy', ['class' => 'btn btn-success'])}}
 {{Form::close()}}
 @endauth
