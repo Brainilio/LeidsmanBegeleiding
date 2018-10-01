@@ -11,6 +11,9 @@ class Favourite extends Model
 {
 
     protected $table = 'Favourite';
+    public $primaryKey = 'id';
+    public $timestamps = true;
+    public $title = 'title';
 
     public function user() {
         $this->belongsTo(User::class);

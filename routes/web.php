@@ -19,6 +19,8 @@ Route::get('/services', 'PagesController@services');
 
 Route::get('/home/users', 'PagesController@userlist');
 
+Route::get('/home/order', 'PagesController@boughtlist');
+
 Route::post('/', 'BuyController@buy');
 
 Route::resource('posts', 'PostsController');

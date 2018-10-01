@@ -20,7 +20,7 @@ class BuyController extends Controller
         $favourite->title = $post->title;
         $favourite->body = $post->body;
         $favourite->save();
-        return view('home')->with('posts', $user->posts);
+        return redirect('/posts')->with('success', 'Pakket gekocht!');
 
 
 

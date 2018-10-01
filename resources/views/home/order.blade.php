@@ -9,8 +9,6 @@
             <div class="card">
                 <div class="card-header"><a href="/home">Dashboard<a></div>
 
-                    <div class="card-header"><a href="/home/order">Gekochte Pakketten<a></div>
-
                     @if(Auth::user()->admin == 1)
                     <div class="card-header"><a href="/home/users">Gebruikers<a></div>
                         @endif
@@ -25,18 +23,18 @@
 
 
                     <h3>Alle gebruikers</h3>
-                    @if(count($users) > 0)
+                    @if(count($favourite) > 0)
                     <table class="table table-striped">
                         <tr>
                             <th>ID</th>
                             <th>Naam</th>
                             <th>Email</th>
                         </tr>
-                        @foreach($users as $user)
+                        @foreach($favourite as $favourites)
                         <tr>
-                                <td>{{$user->id}}</td>
-                                <td>{{$user->name}}</td>
-                                <td>{{$user->email}}</td>
+                            <td>{{$favourites->id}}</td>
+                            <td>{{$favourites->user_id}}</td>
+                            <td>{{$favourites->post_id}}</td>
 
                             </tr>
                         @endforeach

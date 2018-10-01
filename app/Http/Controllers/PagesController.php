@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
+use App\Favourite;
 
 class PagesController extends Controller //elke controller moet een controller extenden
 {
@@ -38,6 +39,13 @@ class PagesController extends Controller //elke controller moet een controller e
         return view('home.users')->with('users', $users);
     }
 
+    public function boughtlist() {
+
+        $favourites = Favourite::all();
+
+
+        return view('home.order')->with('favourite', $favourites);
+    }
 
 
 
