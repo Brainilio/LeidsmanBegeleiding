@@ -17,9 +17,7 @@ class BuyController extends Controller
         $user = auth()->user();
         $favourite->user_id = $user->id;
         $favourite->post_id = $post->id;
-        $favourite->title = $post->title;
-        $favourite->body = $post->body;
-        $favourite->save();
+
         return redirect('/posts')->with('success', 'Pakket gekocht!');
 
 

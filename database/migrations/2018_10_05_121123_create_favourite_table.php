@@ -1,10 +1,11 @@
+
 <?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostUsersTable extends Migration
+class CreateFavouriteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,9 +18,6 @@ class CreatePostUsersTable extends Migration
             $table->increments('id');
             $table->integer('post_id');
             $table->integer('user_id');
-            $table->string('title');
-            $table->mediumText('body');
-            $table->timestamps();
 
 
         });
@@ -37,3 +35,4 @@ class CreatePostUsersTable extends Migration
         Schema::dropIfExists('post_users');
     }
 }
+
