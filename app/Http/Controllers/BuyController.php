@@ -15,8 +15,9 @@ class BuyController extends Controller
         $favourite = new Favourite;
         $post = Post::find($request->id);
         $user = auth()->user();
-        $favourite->user_id = $user->id;
-        $favourite->post_id = $post->id;
+
+        $favourite->user_id = "huh";
+        $favourite->post_id = "huh";
 
         return redirect('/posts')->with('success', 'Pakket gekocht!');
 
