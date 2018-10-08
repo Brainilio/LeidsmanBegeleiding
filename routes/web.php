@@ -19,9 +19,9 @@ Route::get('/services', 'PagesController@services');
 
 Route::get('/home/users', 'PagesController@userlist');
 
-Route::get('/home/order', 'PagesController@boughtlist');
+Route::get('/home/fav', 'PagesController@favlist');
 
-Route::post('/', 'BuyController@buy');
+Route::post('/', 'FavController@favourite');
 
 Route::resource('posts', 'PostsController');
 

@@ -14,6 +14,7 @@ class Favourite extends Model
     public $primaryKey = 'id';
 
 
+
     public function user() {
         $this->belongsTo(User::class);
     }

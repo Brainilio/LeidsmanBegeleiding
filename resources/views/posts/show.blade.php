@@ -5,9 +5,9 @@
 <a href="/posts" class="btn btn-default">Go back</a>
 <h1>{{$post->title}}</h1>
 @auth
-{{Form::open(['action' => ['BuyController@buy'], 'method' => 'POST', 'class' => 'float-right'])}}
+{{Form::open(['action' => ['FavController@favourite'], 'method' => 'POST', 'class' => 'float-right'])}}
 {{Form::hidden('id', $post->id)}}
-{{Form::submit('Buy', ['class' => 'btn btn-success'])}}
+{{Form::submit('Favourite', ['class' => 'btn btn-success'])}}
 {{Form::close()}}
 
 

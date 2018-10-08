@@ -39,12 +39,12 @@ class PagesController extends Controller //elke controller moet een controller e
         return view('home.users')->with('users', $users);
     }
 
-    public function boughtlist() {
+    public function favlist() {
 
         $favourites = Favourite::all();
 
 
-        return view('home.order')->with('favourite', $favourites);
+        return view('home.fav')->with('favourite', $favourites);
     }
 
 
