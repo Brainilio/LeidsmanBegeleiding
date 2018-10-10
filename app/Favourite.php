@@ -10,17 +10,14 @@ use Illuminate\Database\Migrations\Migration;
 class Favourite extends Model
 {
 
-    protected $table = 'favourite';
-    public $primaryKey = 'id';
-
-
+    protected $table = 'favourites';
 
     public function user() {
         $this->belongsTo(User::class);
     }
 
     public function post() {
-        $this->belongsTo(Post::class);
+        $this->belongsToMany(Post::class);
     }
 
 

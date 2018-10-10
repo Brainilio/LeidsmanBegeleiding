@@ -40,7 +40,7 @@
                         @endforeach
                     </table>
                     @else
-                    <h4>Geen gebruikers!</h4>
+                    <h4>Geen Favorieten!</h4>
                     @endif
 
 

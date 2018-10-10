@@ -9,12 +9,6 @@
 {{Form::hidden('id', $post->id)}}
 {{Form::submit('Favourite', ['class' => 'btn btn-success'])}}
 {{Form::close()}}
-
-
-
-
-
-
 @endauth
 <img style="width:100px height:500px" src="/storage/cover_images/{{$post->cover_image}}">
     <div class="well">

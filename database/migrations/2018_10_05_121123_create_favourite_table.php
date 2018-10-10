@@ -14,12 +14,14 @@ class CreateFavouriteTable extends Migration
      */
     public function up()
     {
-        Schema::create('Favourite', function (Blueprint $table) {
+        Schema::create('favourites', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('post_id');
-            $table->integer('user_id');
-
-
+            $table->integer('post_id')->unsigned();
+            $table->foreign('post_id')->references('id')->on('posts');
+            // hard coded voor database
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
 
 
@@ -32,7 +34,7 @@ class CreateFavouriteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_users');
+        Schema::dropIfExists('favourites');
     }
 }
 
