@@ -8,6 +8,8 @@
         <p><a class="btn btn-primary btn-lg" href="/about" role="button">Info</a></p>
 
     </div>
+
+
 @endsection
 
 

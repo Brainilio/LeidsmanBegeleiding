@@ -29,7 +29,7 @@ class FavController extends Controller
         $favourite->post_id = Post::find($request->id)->id;
         $favourite->save();
 
-        return redirect('/posts')->with('success', 'Pakket gekocht!');
+        return redirect('home/fav')->with('success', 'Pakket gekocht!');
 
     }
 }
