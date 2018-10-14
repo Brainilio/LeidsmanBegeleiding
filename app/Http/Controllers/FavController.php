@@ -34,22 +34,48 @@ class FavController extends Controller
     }
 
     public function showfavourite() {
-        $favourites = Favourite::where('user_id', auth()->user()->id)->get();
-        $favourite_post_id = Favourite::select('post_id')->get();
+
+         $favourites = Favourite::where('user_id', auth()->user()->id)->get();
+
+
+         $post = DB::table('posts')->where('id', $favourites)->select('id');
+
+//  ik wil favourites->post_id in een variabele stoppen
+// en deze wil ik dan searchen in mijn posts naam waar id = favourites->post_id
+
+// post titel opvragen waar post id hetzelfde is als favourite.post_id waar
+// user_id de ingelogde user_id is
+
+
+
+
+
+        // $favourite_post_id = Favourite::select('post_id')->get();
+
+
+
+
 
         // $post = Post::select('title')->where('id', $favourite_post_id)->get();
 
-        $post = DB::table('posts')
-        ->join('favourites', 'posts.id', '=', 'favourites.post_id')
-        ->select('posts.title', 'favourites.id')
-        ->get();
+        // $post = DB::table('posts')
+        // ->join('favourites', 'posts.id', '=', 'favourites.post_id')
+        // ->select('posts.title', 'favourites.id')
+        // ->get();
+
+        // $favourites = DB::table('favourites')
+        // ->join('users', 'favourites.user_id', '=', $favourite_user)
+        // ->select('users.name', 'users.id')
+        // ->get();
 
         // $post = Post::select('title')->where('id', $favourite_post_id)->get();
         // $post = Post::where('id', $favourite_post_id)->get();
 
 
 
-        return view('home.fav')->with('favourite', $favourites)->with('postname', $post);
+        return view('home.fav')->with('favourite', $favourites)->with('post', $post);
+
+        // ->with('postname', $post);
     }
 }
 

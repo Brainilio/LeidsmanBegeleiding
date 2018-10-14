@@ -19,17 +19,18 @@
 
 
                     <h3>Alle gebruikers</h3>
-                    @if(count($favourite) > 0)
+                    @if(count($post) > 0)
                     <table class="table table-striped">
                         <tr>
-                            <th>ID</th>
-                            <th>Naam</th>
-                            <th>Favoriet</th>
+                            <th>Favoriet.id</th>
+                            <th>User.id</th>
+                            <th>Favoriet.post.id</th>
                         </tr>
                         @foreach($favourite as $favourites)
                         <tr>
                             <td>{{$favourites->id}}</td>
                             <td>{{$favourites->user_id}}</td>
+                        <td>{{$favourites->post_id}}</td>
 
 
                             </tr>
@@ -39,7 +40,7 @@
                     <h4>Geen Favorieten!</h4>
                     @endif
 
-                    @if(count($postname) > 0)
+                    {{-- @if(count($postname) > 0)
                     @foreach($postname as $postnames)
                     <ul>
                     <li>{{$postnames->title}}</li>
@@ -47,7 +48,7 @@
                     @endforeach
                     @else
                     <p>Geen titels</p>
-                    @endif
+                    @endif --}}
 
 
                 </div>
