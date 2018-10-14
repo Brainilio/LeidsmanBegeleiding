@@ -7,11 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><a href="/home">Dashboard<a></div>
-
-                    @if(Auth::user()->admin == 1)
-                    <div class="card-header"><a href="/home/users">Gebruikers<a></div>
-                        @endif
+                @include('inc.tabhome')
 
                 <div class="card-body">
                     @if (session('status'))
@@ -28,19 +24,29 @@
                         <tr>
                             <th>ID</th>
                             <th>Naam</th>
-                            <th>Email</th>
+                            <th>Favoriet</th>
                         </tr>
                         @foreach($favourite as $favourites)
                         <tr>
                             <td>{{$favourites->id}}</td>
                             <td>{{$favourites->user_id}}</td>
-                            <td>{{$favourites->post_id}}</td>
+
 
                             </tr>
                         @endforeach
                     </table>
                     @else
                     <h4>Geen Favorieten!</h4>
+                    @endif
+
+                    @if(count($postname) > 0)
+                    @foreach($postname as $postnames)
+                    <ul>
+                    <li>{{$postnames->title}}</li>
+                    </u>
+                    @endforeach
+                    @else
+                    <p>Geen titels</p>
                     @endif
 
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
@@ -31,6 +31,25 @@ class FavController extends Controller
 
         return redirect('home/fav')->with('success', 'Pakket gekocht!');
 
+    }
+
+    public function showfavourite() {
+        $favourites = Favourite::where('user_id', auth()->user()->id)->get();
+        $favourite_post_id = Favourite::select('post_id')->get();
+
+        // $post = Post::select('title')->where('id', $favourite_post_id)->get();
+
+        $post = DB::table('posts')
+        ->join('favourites', 'posts.id', '=', 'favourites.post_id')
+        ->select('posts.title', 'favourites.id')
+        ->get();
+
+        // $post = Post::select('title')->where('id', $favourite_post_id)->get();
+        // $post = Post::where('id', $favourite_post_id)->get();
+
+
+
+        return view('home.fav')->with('favourite', $favourites)->with('postname', $post);
     }
 }
 

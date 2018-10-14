@@ -19,7 +19,7 @@ Route::get('/services', 'PagesController@services');
 
 Route::get('/home/users', 'PagesController@userlist');
 
-Route::get('/home/fav', 'PagesController@favlist');
+Route::get('/home/fav', 'FavController@showFavourite');
 
 Route::post('/', 'FavController@favourite');
 

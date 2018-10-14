@@ -7,13 +7,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><a href="/home">Dashboard<a></div>
+                @include('inc.tabhome')
 
-                    <div class="card-header"><a href="/home/order">Gekochte Pakketten<a></div>
 
-                    @if(Auth::user()->admin == 1)
-                    <div class="card-header"><a href="/home/users">Gebruikers<a></div>
-                        @endif
 
                 <div class="card-body">
                     @if (session('status'))
