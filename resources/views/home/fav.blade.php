@@ -18,7 +18,7 @@
 
 
 
-                    <h3>Alle gebruikers</h3>
+                    <h3>Alle Favorieten </h3>
                     @if(count($post) > 0)
                     <table class="table table-striped">
                         <tr>
@@ -30,10 +30,9 @@
                         <tr>
                             <td>{{$favourites->id}}</td>
                             <td>{{$favourites->user_id}}</td>
-                        <td>{{$favourites->post_id}}</td>
+                            <td>{{$favourites->post_id}}</td>
 
-
-                            </tr>
+                        </tr>
                         @endforeach
                     </table>
                     @else
