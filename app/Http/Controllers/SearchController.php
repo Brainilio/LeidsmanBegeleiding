@@ -12,14 +12,15 @@ class SearchController extends Controller
        $search = $request->get('search');
        $posts=DB::table('posts')
                 ->where('title', 'LIKE', '%' .$search. "%")
-                ->where('body', 'LIKE', '%' .$search. "%")
-                ->where('created_at', 'LIKE', '%' .$search. "%")
-                ->where('updated_at', 'LIKE', '%' .$search. "%")
-                ->where('cover_image', 'LIKE', '%' .$search. "%")
-                ->where('user_id', 'LIKE', '%' .$search. "%")
-                ->where('id', 'LIKE', '%' .$search. "%")
-                ->orderBy('created_at', 'desc');
+                ->orWhere('body', 'LIKE', '%' .$search. "%")
+                ->orWhere('created_at', 'LIKE', '%' .$search. "%")
+                ->orWhere('updated_at', 'LIKE', '%' .$search. "%")
+                ->orWhere('cover_image', 'LIKE', '%' .$search. "%")
+                ->orWhere('user_id', 'LIKE', '%' .$search. "%")
+                ->orWhere('id', 'LIKE', '%' .$search. "%")
+                ->orderBy('created_at', 'desc')
+                ->get();
 
-         return view('posts.index')->with('post s', $posts);
+         return view('posts.index')->with('posts', $posts);
     }
 }
