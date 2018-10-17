@@ -14,7 +14,7 @@
 
             </div>
             <div class="col col-lg-2">
-                    <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
+                    <small>Written on {{$post->created_at}}</small>
 
             </div>
         </div>

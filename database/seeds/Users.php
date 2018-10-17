@@ -11,6 +11,11 @@ class Users extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('users')->insert([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => '123456',
+            'admin' => '1'
+        ]);
     }
 }

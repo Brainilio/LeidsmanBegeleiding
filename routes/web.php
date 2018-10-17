@@ -25,7 +25,7 @@ Route::post('/', 'FavController@favourite');
 
 Route::resource('posts', 'PostsController');
 
-Route::get('search', 'SearchController@scopeSearch');
+Route::post('search', 'SearchController@search');
 
 
 
