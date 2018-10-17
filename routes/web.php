@@ -25,6 +25,8 @@ Route::post('/', 'FavController@favourite');
 
 Route::resource('posts', 'PostsController');
 
+Route::get('/search', 'SearchController@scopeSearch');
+
 
 
    //     Route::get('/users/{id}', function($id) {
@@ -34,15 +36,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
 
 
 

@@ -1,8 +1,8 @@
 @extends ('layouts.app')
 @section('content')
     <h1>Pakketten</h1>
-
-    @if(count($posts) > 0)
+@include('inc.search')
+@if(count($posts) > 0)
 @foreach($posts as $post)
     <div class="container">
         <div class="row">
@@ -28,4 +28,6 @@
     @else
         <p>Geen pakketten gevonden!</p>
     @endif
+
+
     @endsection
