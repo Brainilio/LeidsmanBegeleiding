@@ -15,28 +15,29 @@
 
                     @if(Auth::user()->admin == 1)
                     <a href="/posts/create" class="btn btn-primary">Maak nieuw pakket aan!</a>
-
+                    <br>
+                    <br>
                     <h3>Aangemaakte pakketten</h3>
                     @if(count($posts) > 0)
                     <table class="table table-striped">
                         <tr>
                             <th>Title</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                            <th>Status</th>
                         </tr>
                         @foreach($posts as $post)
                         <tr>
-                                <td>{{$post->title}}</td>
-                                <td><a href="/posts/{{$post->id}}/edit" class="btn btn-default">Edit</a></th>
-                                <td> {{Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])}}
+                                <td><h3>{{$post->title}}</h3></td>
+                                <td><a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a></th>
+                                <td> {{Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST'])}}
                                         {{Form::hidden('_method', 'DELETE')}}
                                         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                     {{Form::close()}} </td>
                                     @if($post->status == 1)
-                                <td>Enabled</td>
+                                <td><button type="button" class="btn btn-primary" disabled>Active</button></td>
                                 @else
-                                <td>disabled</td>
+                                <td><button type="button" class="btn btn-danger " disabled>Inactive</button></td>
                                 @endif
                             </tr>
                         @endforeach

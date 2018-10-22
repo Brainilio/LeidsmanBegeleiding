@@ -12,8 +12,9 @@ class SearchController extends Controller
     public function search(Request $request) {
        $search = $request->get('search');
        $posts=  DB::table('posts')
+                ->where('status', '1')
                 ->where('title', 'LIKE', '%' .$search. "%")
-                ->orWhere('body', 'LIKE', '%' .$search. "%")
+                ->Where('body', 'LIKE', '%' .$search. "%")
                 ->get();
 
          return view('posts.index')->with('posts', $posts);
