@@ -15,13 +15,13 @@
 
                     @if(Auth::user()->admin == 1)
                     <a href="/posts/create" class="btn btn-primary">Maak nieuw pakket aan!</a>
-                    @endif
 
-                    <h3>Jouw pakketten</h3>
+                    <h3>Aangemaakte pakketten</h3>
                     @if(count($posts) > 0)
                     <table class="table table-striped">
                         <tr>
                             <th>Title</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -33,11 +33,17 @@
                                         {{Form::hidden('_method', 'DELETE')}}
                                         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                     {{Form::close()}} </td>
+                                    @if($post->status == 1)
+                                <td>Enabled</td>
+                                @else
+                                <td>disabled</td>
+                                @endif
                             </tr>
                         @endforeach
                     </table>
                     @else
                     <h4>Geen pakketten!</h4>
+                    @endif
                     @endif
 
 

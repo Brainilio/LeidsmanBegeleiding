@@ -18,7 +18,7 @@
 
 
 
-                    <h3>Alle Favorieten </h3>
+                    <h3>Jouw Favorieten </h3>
                     @if(count($post) > 0)
                     <table class="table table-striped">
                         <tr>

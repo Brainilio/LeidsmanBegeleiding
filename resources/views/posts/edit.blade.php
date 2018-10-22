@@ -18,6 +18,14 @@
     <div class="form-group">
             {{Form::file('cover_image')}}
         </div>
+        <div class="form-group">
+                <select name="status" class="form-control">
+
+                <option value="1"  <?php if($post->status == '1') { ?> selected="selected" <?php }?>>Enable</option>
+
+                        <option value="0" <?php if($post->status == '0') { ?> selected="selected" <?php }?>>Disable</option>
+
+         </div>
     {{Form::hidden('_method', 'PUT')}}
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
 

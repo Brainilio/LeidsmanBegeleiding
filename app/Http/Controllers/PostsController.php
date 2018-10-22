@@ -20,7 +20,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts =  Post::orderBy('created_at', 'desc')->get();;
+        $posts =  Post::orderBy('created_at', 'desc')->where('status', '1')->get();;
        return view('posts.index')->with('posts', $posts);
 
     }
@@ -91,7 +91,11 @@ class PostsController extends Controller
      */
     public function show($id)
     {
+
         $post =  Post::find($id);
+        if($post->status == 0) {
+            return redirect('posts')->with('error', 'Sorry, that post is not available');
+        }
         return view('posts.show')->with('post', $post);
     }
 
@@ -149,6 +153,7 @@ class PostsController extends Controller
         $post = Post::find($id);
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->status = $request->input('status');
         if($request->hasFile('cover_image')) {
             $post->cover_image = $fileNameToStore;
         }

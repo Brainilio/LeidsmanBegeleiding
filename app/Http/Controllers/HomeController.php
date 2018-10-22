@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Post;
 
 class HomeController extends Controller
 {
@@ -24,8 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user_id = auth()->user()->id;
-        $user = User::find($user_id);
-        return view('home')->with('posts', $user->posts);
+        $posts = Post::all();
+
+        return view('home')->with('posts', $posts);
     }
+
+
 }
