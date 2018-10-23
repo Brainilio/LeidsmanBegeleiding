@@ -2,6 +2,7 @@
 
 @section('content')
 
+<div class="container">
 <a href="/posts" class="btn btn-default">Go back</a>
 <h1>{{$post->title}}</h1>
 @auth
@@ -10,13 +11,15 @@
 {{Form::submit('Favourite', ['class' => 'btn btn-success'])}}
 {{Form::close()}}
 @endauth
-<img style="width:100px height:500px" src="/storage/cover_images/{{$post->cover_image}}">
-    <div class="well">
+<img width="500" height="500" src="/storage/cover_images/{{$post->cover_image}}">
+    <div class="well container">
         <h3><a href="/posts/{{$post->id}}">{{$post->title }}</a></h3>
         <small>Written on {{$post->created_at}} and by {{$post->user->name}}</small>
+        <br>
         <div>
                 {{$post->body}}
         </div>
+
     </div>
 
    @auth
@@ -34,3 +37,4 @@
     @endauth
 
     @endsection
+</div>

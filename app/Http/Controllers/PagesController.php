@@ -50,6 +50,8 @@ class PagesController extends Controller //elke controller moet een controller e
 
 
 
+
+
 }
 
 

@@ -20,8 +20,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts =  Post::orderBy('created_at', 'desc')->where('status', '1')->get();;
-       return view('posts.index')->with('posts', $posts);
+        $posts =  Post::orderBy('created_at', 'desc')->where('status', '1')->simplePaginate(2);
+
+        return view('posts.index')->with('posts', $posts);
 
     }
 
