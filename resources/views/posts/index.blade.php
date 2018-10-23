@@ -19,7 +19,7 @@
             </div>
         </div>
 
-
+    </div>
     <br>
 
 
@@ -29,7 +29,7 @@
     @else
         <p>Geen pakketten gevonden!</p>
     @endif
-
+    <div class="container">
     {{ $posts->links() }}
-</div>
+    </div>
     @endsection
