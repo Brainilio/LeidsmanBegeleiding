@@ -3,6 +3,7 @@
 @section('content')
 
 <a href="/home" class="btn btn-default">Go back</a>
+<div class="container">
 <h3>Create Post</h3>
 
 {!! Form::open(['action' => 'PostsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
@@ -21,5 +22,6 @@
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
 
 {!! Form::close() !!}
+</div>
 
     @endsection

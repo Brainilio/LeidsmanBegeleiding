@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Post;
 use App\Favourite;
@@ -20,13 +21,13 @@ class PagesController extends Controller //elke controller moet een controller e
     }
 
     public function services() {
-        $title = 'This is what we have to offer!';
-        $data = array(
-          'services' => ['Rekenen', 'Wiskunde begeleiding', 'Examen voorbereidingen']
+        $post = DB::table('posts')
+                ->inRandomOrder()
+                ->get();
+        $title = 'Wij bieden verschillende services aan, zoals!';
 
-        );
 
-        return view('pages.services')->with('title', $title)->with($data);
+        return view('pages.services')->with('title', $title)->with('posts', $post);
     }
 
     public function userlist() {

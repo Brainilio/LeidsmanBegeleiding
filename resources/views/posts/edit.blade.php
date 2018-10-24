@@ -3,6 +3,7 @@
 @section('content')
 
 <a href="/posts" class="btn btn-default">Go back</a>
+<div class="container">
 <h3>Edit Post</h3>
 
 {!! Form::open(['action' => ['PostsController@update', $post->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
@@ -30,7 +31,7 @@
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
 
 {!! Form::close() !!}
-
+        </div>
 
 
 

@@ -30,6 +30,6 @@
         <p>Geen pakketten gevonden!</p>
     @endif
     <div class="container">
-    {{ $posts->links() }}
+        {{ $posts->appends(request()->input())->links() }}
     </div>
     @endsection
