@@ -16,7 +16,7 @@ class SearchController extends Controller
                 ->where('status', '1')
                 ->where('title', 'LIKE', '%' .$search. "%")
                 ->Where('body', 'LIKE', '%' .$search. "%")
-                ->simplePaginate(2);
+                ->get();
 
          return view('posts.index')->with('posts', $posts);
     }
@@ -31,7 +31,7 @@ class SearchController extends Controller
 
         $posts = DB::table('posts')
                 ->where('user_id', $search)
-                ->simplePaginate(2);
+                ->get();
 
 
 

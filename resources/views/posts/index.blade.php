@@ -29,7 +29,7 @@
     @else
         <p>Geen pakketten gevonden!</p>
     @endif
-    <div class="container">
+    {{-- <div class="container">
         {{ $posts->appends(request()->input())->links() }}
-    </div>
+    </div> --}}
     @endsection
