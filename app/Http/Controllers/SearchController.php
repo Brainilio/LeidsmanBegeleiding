@@ -30,6 +30,7 @@ class SearchController extends Controller
         //         ->get();
 
         $posts = DB::table('posts')
+                ->where('status', '1')
                 ->where('user_id', $search)
                 ->get();
 

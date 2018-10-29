@@ -26,7 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $logged_admin = auth()->user()->id;
+        $posts = DB::table('posts')
+                 ->where('user_id', $logged_admin)
+                 ->get();
 
         return view('home')->with('posts', $posts);
     }
