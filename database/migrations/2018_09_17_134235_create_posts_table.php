@@ -18,6 +18,10 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->mediumText('body');
             $table->timestamps();
+            $table->string('cover_image');
+            $table->integer('user_id');
+            $table->tinyInteger('status')->default('1');
+
 
         });
     }

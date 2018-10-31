@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
     public function favourite(){
-        return $this->belongsToMany(Favourite::class);
+        return $this->hasMany(Favourite::class);
     }
 
 

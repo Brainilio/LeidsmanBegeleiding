@@ -17,7 +17,7 @@ class Favourite extends Model
     }
 
     public function post() {
-        $this->belongsToMany(Post::class, 'post.title');
+        $this->hasMany(Post::class);
     }
 
 

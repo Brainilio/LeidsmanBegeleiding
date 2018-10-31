@@ -38,7 +38,10 @@ class FavController extends Controller
          $favourites = Favourite::where('user_id', auth()->user()->id)->get();
 
 
-         $post = DB::table('posts')->where('id', $favourites)->select('id');
+         $post = Post::where('id', '19')->with(['favourites', 'id'])->get();
+
+         $posts = Favourite::with('posts')->where('post_id', '=', 'posts.id')->get();
+         dd($posts);
 
 //  ik wil favourites->post_id in een variabele stoppen
 // en deze wil ik dan searchen in mijn posts naam waar id = favourites->post_id
