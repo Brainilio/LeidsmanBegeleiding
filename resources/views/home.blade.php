@@ -34,12 +34,25 @@
                                         {{Form::hidden('_method', 'DELETE')}}
                                         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                     {{Form::close()}} </td>
+
+                                    {{-- <form action="" method="POST" id="statusform">
                                     @if($post->status == 1)
-                                <td><button type="button" class="btn btn-primary" disabled>Active</button></td>
+                                <td><button type="submit" class="btn btn-primary" form="statusform">Active</button></td>
                                 @else
-                                <td><button type="button" class="btn btn-danger " disabled>Inactive</button></td>
-                                @endif
+                                <td><button type="submit" class="btn btn-danger " form="statusform">Inactive</button></td>
+                                @endif --}}
+                                <td>
+                                    {{Form::open(['action' => ['HomeController@status'], 'method' => 'POST'])}}
+                                    {{Form::hidden('id', $post->id)}}
+                                    @if($post->status == 1)
+                                    {{Form::submit('Active', ['class' => 'btn btn-primary', 'name' => 'statusbutton','value' => '2'])}}
+                                    @else
+                                    {{Form::submit('Inactive', ['class' => 'btn btn-danger', 'name' => 'statusbutton','value' => '2'])}}
+                                    @endif
+                                    {{Form::close()}}
+                                </td>
                             </tr>
+                            {{-- {{Form::submit('Inactive', ['class' => 'btn btn-danger', 'value' => '2'])}} --}}
                         @endforeach
                     </table>
                     @else
