@@ -33,7 +33,7 @@ class FavController extends Controller
 
     }
 
-    public function showfavourite() {
+    public function showfavourite($id) {
 
          $favourites = Favourite::where('user_id', auth()->user()->id)->get();
 

@@ -28,8 +28,8 @@
                         </tr>
                         @foreach($favourite->posts as $post)
                         <tr>
-                            <td>{{$favourites->id}}</td>
-                            <td>{{$favourites->user_id}}</td>
+                            {{-- <td>{{$favourites->id}}</td>
+                            <td>{{$favourites->user_id}}</td> --}}
 
                             <td>{{$post->title}}</td>
 
