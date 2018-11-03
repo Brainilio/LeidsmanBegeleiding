@@ -61,8 +61,36 @@ class HomeController extends Controller
 
        }
 
+    }
+
+    public function edit($id) {
+
+        $user_id = auth()->user()->id;
+        $user_requested = $id;
+        $user =  User::find($id);
+
+        if($user_id == $user_requested) {
+            return view('home/edituser')->with('user', $user);
+        } else {
+            return redirect('/home')->with('error', 'Unauthorized Page');
+        }
+
+    }
+
+    public function update(Request $request, $id) {
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . \Auth::user()->id
+        ]);
+
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
 
 
+        $user->save();
+
+        return redirect('/home')->with('success', 'Profile Updated');
 
 
 

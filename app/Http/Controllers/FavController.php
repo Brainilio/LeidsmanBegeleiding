@@ -37,11 +37,10 @@ class FavController extends Controller
 
          $favourites = Favourite::where('user_id', auth()->user()->id)->get();
 
+        //  $post = Post::where('id', '19')->with(['favourites', 'id'])->get();
 
-         $post = Post::where('id', '19')->with(['favourites', 'id'])->get();
-
-         $posts = Favourite::with('posts')->where('post_id', '=', 'posts.id')->get();
-         dd($posts);
+        //  $posts = Favourite::with('posts')->where('post_id', '=', 'posts.id')->get();
+        //  dd($posts);
 
 //  ik wil favourites->post_id in een variabele stoppen
 // en deze wil ik dan searchen in mijn posts naam waar id = favourites->post_id
@@ -76,7 +75,7 @@ class FavController extends Controller
 
 
 
-        return view('home.fav')->with('favourite', $favourites)->with('post', $post);
+        return view('home.fav')->with('favourite', $favourites);
 
         // ->with('postname', $post);
     }

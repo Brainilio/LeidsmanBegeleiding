@@ -53,9 +53,19 @@ Auth::routes();
 
 Route::get('/home/fav', 'FavController@showFavourite');
 
+
+//Route voor het schakelen van status
 Auth::routes();
 
 Route::post('/home', 'HomeController@status');
+
+//Route voor het editen van profiel
+Auth::routes();
+Route::get('/home/edituser/{id}', 'HomeController@edit');
+
+//Route voor het updaten van profiel
+Auth::routes();
+Route::put('/home/{id}', 'HomeController@update');
 
 
 

@@ -36,6 +36,10 @@
         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
     {{Form::close()}}
     @endif
+
+
+
+
 <div class="container">
 <h4>Post a Comment:</h4>
 @endauth
@@ -85,7 +89,10 @@
 {!! Form::close() !!}
 
   @else
-<h2>Sorry, jij mag pas over {{3-$userdays}} dagen commenten!</h2>
+
+<div class="alert alert-danger container" role="alert">
+        Sorry, jij mag pas over {{3-$userdays}} dagen commenten!
+      </div>
 @endif
 
  @endauth

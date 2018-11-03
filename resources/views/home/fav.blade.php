@@ -19,18 +19,19 @@
 
 
                     <h3>Jouw Favorieten </h3>
-                    @if(count($post) > 0)
+                    @if(count($favourite) > 0)
                     <table class="table table-striped">
                         <tr>
                             <th>Favoriet.id</th>
                             <th>User.id</th>
                             <th>Favoriet.post.id</th>
                         </tr>
-                        @foreach($favourite as $favourites)
+                        @foreach($favourite->posts as $post)
                         <tr>
                             <td>{{$favourites->id}}</td>
                             <td>{{$favourites->user_id}}</td>
-                            <td>{{$favourites->post_id}}</td>
+
+                            <td>{{$post->title}}</td>
 
                         </tr>
                         @endforeach

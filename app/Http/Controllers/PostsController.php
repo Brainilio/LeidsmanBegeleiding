@@ -144,8 +144,6 @@ class PostsController extends Controller
     public function edit($id)
     {
 
-
-
         if(auth()->user()->admin !== 1) {
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
