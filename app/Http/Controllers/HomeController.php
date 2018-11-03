@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Post;
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
 
 class HomeController extends Controller
 {
@@ -26,18 +28,23 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         $logged_admin = auth()->user()->id;
         $posts = DB::table('posts')
                  ->where('user_id', $logged_admin)
                  ->get();
 
+
         return view('home')->with('posts', $posts);
     }
 
     public function status(Request $request) {
+
        $postid = $request->id;
 
+
        $currentstatus = $request->get('statusbutton');
+
        if($currentstatus == "Active") {
 
         $post = Post::find($postid);

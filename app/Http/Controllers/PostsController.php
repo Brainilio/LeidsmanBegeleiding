@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Post;
 use App\User;
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
+
 class PostsController extends Controller
 {
 
@@ -20,7 +24,10 @@ class PostsController extends Controller
      */
     public function index()
     {
+
         $posts =  Post::orderBy('created_at', 'desc')->where('status', '1')->get();
+
+
 
         return view('posts.index')->with('posts', $posts);
 
@@ -78,6 +85,7 @@ class PostsController extends Controller
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id; //zet post in de user_id die ingelogd is
         $post->cover_image = $fileNameToStore;
+        $post->status = 0;
         $post->save();
 
         return redirect('/posts')->with('success', 'Post Created');
@@ -92,12 +100,18 @@ class PostsController extends Controller
      */
     public function show($id)
     {
+        $post = Post::find($id);
+        $post1 =  new Carbon($post->created_at);
+        $now = Carbon::now()->format('Y-m-d H:i:s');
+        $to = Carbon::createFromFormat('Y-m-d H:s:i', $post1);
+        $from = Carbon::createFromFormat('Y-m-d H:s:i', $now);
+        $diff_in_days = $to->diffInDays($from);
 
         $post =  Post::find($id);
         if($post->status == 0) {
             return redirect('posts')->with('error', 'Sorry, that post is not available');
         }
-        return view('posts.show')->with('post', $post);
+        return view('posts.show')->with('post', $post)->with('days', $diff_in_days);
     }
 
     /**

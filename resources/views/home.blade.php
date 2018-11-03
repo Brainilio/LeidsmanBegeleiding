@@ -25,6 +25,7 @@
                             <th>Edit</th>
                             <th>Delete</th>
                             <th>Status</th>
+                            <th>DOE</th>
                         </tr>
                         @foreach($posts as $post)
                         <tr>
@@ -35,12 +36,7 @@
                                         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                     {{Form::close()}} </td>
 
-                                    {{-- <form action="" method="POST" id="statusform">
-                                    @if($post->status == 1)
-                                <td><button type="submit" class="btn btn-primary" form="statusform">Active</button></td>
-                                @else
-                                <td><button type="submit" class="btn btn-danger " form="statusform">Inactive</button></td>
-                                @endif --}}
+
                                 <td>
                                     {{Form::open(['action' => ['HomeController@status'], 'method' => 'POST'])}}
                                     {{Form::hidden('id', $post->id)}}
@@ -51,8 +47,11 @@
                                     @endif
                                     {{Form::close()}}
                                 </td>
+                                <td>
+                                    hi
+                                </td>
                             </tr>
-                            {{-- {{Form::submit('Inactive', ['class' => 'btn btn-danger', 'value' => '2'])}} --}}
+
                         @endforeach
                     </table>
                     @else

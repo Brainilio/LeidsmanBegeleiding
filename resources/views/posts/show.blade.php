@@ -6,10 +6,14 @@
 <a href="/posts" class="btn btn-default">Go back</a>
 <h1>{{$post->title}}</h1>
 @auth
+@if($days > 3)
 {{Form::open(['action' => ['FavController@favourite'], 'method' => 'POST', 'class' => 'float-right'])}}
 {{Form::hidden('id', $post->id)}}
 {{Form::submit('Favourite', ['class' => 'btn btn-success'])}}
 {{Form::close()}}
+@else
+<h3>You have to wait {{ 3-$days }} more days to favourite!</h3>
+@endif
 @endauth
 <img width="500" height="500" src="/storage/cover_images/{{$post->cover_image}}">
     <div class="well container">
@@ -19,7 +23,8 @@
         <div>
                 {{$post->body}}
         </div>
-
+        <br>
+    <h4>Post exists for: {{ $days }} days</h4>
     </div>
 
    @auth
