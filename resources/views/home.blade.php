@@ -25,7 +25,7 @@
                             <th>Edit</th>
                             <th>Delete</th>
                             <th>Status</th>
-                            <th>DOE</th>
+
                         </tr>
                         @foreach($posts as $post)
                         <tr>
@@ -47,9 +47,7 @@
                                     @endif
                                     {{Form::close()}}
                                 </td>
-                                <td>
-                                    hi
-                                </td>
+
                             </tr>
 
                         @endforeach

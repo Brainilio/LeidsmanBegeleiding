@@ -88,7 +88,7 @@ class PostsController extends Controller
         $post->status = 0;
         $post->save();
 
-        return redirect('/posts')->with('success', 'Post Created');
+        return redirect('/home')->with('success', 'Post Created, Now you are able to activate the post so others can see it!');
 
     }
 
