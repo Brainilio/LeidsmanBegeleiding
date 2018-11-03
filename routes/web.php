@@ -27,6 +27,8 @@ Route::post('/', 'FavController@favourite');
 // Resource controller voor CRUD
 Route::resource('posts', 'PostsController');
 
+// Route voor comments
+Route::resource('comments', 'CommentsController');
 
 // Route voor het posten van een search filter, zodra er op search wordt geklikt na de filter dan zoekt hij
 Route::post('search/filter', 'SearchController@filtersearch');

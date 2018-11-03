@@ -35,11 +35,62 @@
         {{Form::hidden('_method', 'DELETE')}}
         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
     {{Form::close()}}
-
-
-
     @endif
-    @endauth
+<div class="container">
+<h4>Post a Comment:</h4>
+@endauth
+@guest
+<h4><a href="../login">Log In </a>om te commenten!</h4>
+@endguest
+</div>
+    <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                @foreach($post->comments as $comment)
+                    <div class="comment">
+                        <p><strong>Name</strong>: {{ $comment->name }}</p>
+                        <p><strong>Comment</strong>: <br/>{{ $comment->comment }}</p>
+                        @if(Auth::user()->id == $comment->user_id)
+                        {{Form::open(['action' => ['CommentsController@destroy', $comment->id], 'method' => 'POST', 'class' => 'float-right'])}}
+                        {{Form::hidden('_method', 'DELETE')}}
+                        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                        @endif
+                        @if(Auth::user()->admin == 1)
+                        {{Form::open(['action' => ['CommentsController@destroy', $comment->id], 'method' => 'POST', 'class' => 'float-right'])}}
+                        {{Form::hidden('_method', 'DELETE')}}
+                        {{Form::submit('Admin Delete', ['class' => 'btn btn-warning'])}}
+                        @endif
+                    {{Form::close()}}
+                    </div>
+                @endforeach
+            </div>
+        </div>
 
+    @auth
+
+
+    @if($userdays > 3 || Auth::user()->admin == 1)
+ {!! Form::open(['action' => ['CommentsController@store'], 'method' => 'POST']) !!}
+ {{Form::hidden('post_id', $post->id)}}
+
+  <div class="form-group">
+      {{Form::label('name', 'Name')}}
+      {{Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Name'])}}
+  </div>
+  <div class="form-group">
+  {{Form::label('comment','Comment')}}
+  {{Form::textarea('comment', '', ['class' => 'form-control', 'placeholder' => 'Comment Text'])}}
+  </div>
+  {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+
+{!! Form::close() !!}
+
+  @else
+<h2>Sorry, jij mag pas over {{3-$userdays}} dagen commenten!</h2>
+@endif
+
+ @endauth
+
+
+</div>
     @endsection
 </div>
