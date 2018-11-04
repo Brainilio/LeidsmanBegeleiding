@@ -32,6 +32,7 @@
                                 <td><h3>{{$post->title}}</h3></td>
                                 <td><a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a></th>
                                 <td> {{Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST'])}}
+                                    @csrf
                                         {{Form::hidden('_method', 'DELETE')}}
                                         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                     {{Form::close()}} </td>
@@ -39,6 +40,7 @@
 
                                 <td>
                                     {{Form::open(['action' => ['HomeController@status'], 'method' => 'POST'])}}
+                                    @csrf
                                     {{Form::hidden('id', $post->id)}}
                                     @if($post->status == 1)
                                     {{Form::submit('Active', ['class' => 'btn btn-primary', 'name' => 'statusbutton','value' => '2'])}}

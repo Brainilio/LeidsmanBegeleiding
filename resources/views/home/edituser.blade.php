@@ -17,6 +17,7 @@
                             <h3>Edit Profile</h3>
 
                             {!! Form::open(['action' => ['HomeController@update', $user->id], 'method' => 'POST']) !!}
+                            @csrf
                                 <div class="form-group">
                                     {{Form::label('name', 'Name')}}
                                     {{Form::text('name', $user->name, ['class' => 'form-control', 'placeholder' => 'Email'])}}

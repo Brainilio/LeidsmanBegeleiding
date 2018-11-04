@@ -1,4 +1,5 @@
 {!! Form::open(['url' => 'search', 'method'=>'POST', 'class'=>'navbar-form navbar-left','role' => 'search']) !!}
+@csrf
 <div class="input-group custom-search-form container">
     <input type="text" class="form-control" name="search" id="id" placeholder="Search...">
     <span class="input-group-btn">
@@ -14,6 +15,7 @@
 
 <div class="container">
 {!! Form::open(['url' => 'search/filter', 'method' => 'POST', 'role' => 'filtersearch'])!!}
+@csrf
 
         <h2>Filter by:</h2>
         <select name="filtersearch">
