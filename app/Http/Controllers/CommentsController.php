@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class CommentsController extends Controller
 {
 
+
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +22,7 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+        return redirect('/');
     }
 
     /**
@@ -31,7 +32,7 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('/');
     }
 
     /**
@@ -93,7 +94,7 @@ class CommentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return redirect('/');
     }
 
     /**

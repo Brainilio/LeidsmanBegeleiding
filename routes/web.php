@@ -25,13 +25,13 @@ Route::get('/services', 'PagesController@services');
 Route::post('/', 'FavController@favourite');
 
 // Favorieten deleten
-Route::delete('home/{id}', 'FavController@destroy');
+Route::delete('home/{id}', 'FavController@destroy')->middleware('auth');
 
 // Resource controller voor CRUD
 Route::resource('posts', 'PostsController');
 
 // Route voor comments
-Route::resource('comments', 'CommentsController');
+Route::resource('comments', 'CommentsController')->middleware('auth');;
 
 // Route voor het posten van een search filter, zodra er op search wordt geklikt na de filter dan zoekt hij
 Route::post('search/filter', 'SearchController@filtersearch');
@@ -49,16 +49,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route voor user dashboard
 Auth::routes();
 
-Route::get('/home/users', 'PagesController@userlist');
+Route::get('/home/users', 'HomeController@userlist');
 
 // Route voor fav dashboard
 Auth::routes();
 
-Route::get('/home/fav/{id}', 'FavController@showFavourite');
+Route::get('/home/fav/{id}', 'FavController@showFavourite')->middleware('auth');;
 
 //Route voor comment dashboard
 Auth::routes();
-Route::get('/home/comments/{id}', 'CommentsController@show');
+Route::get('/home/comments/{id}', 'CommentsController@show')->middleware('auth');;
 
 
 //Route voor het schakelen van status
@@ -76,4 +76,16 @@ Route::put('/home/{id}', 'HomeController@update');
 
 
 
+
+//redirecten van edituser & showfavourite als er geen parameters in de link staan
+
+Route::get('home/fav', function() {
+    return redirect('/');
+
+});
+
+Route::get('home/edituser', function() {
+    return redirect('/');
+
+});
 

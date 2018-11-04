@@ -97,5 +97,15 @@ class HomeController extends Controller
 
     }
 
+    public function userlist() {
+        $users = User::all();
+
+        if(auth()->user()->admin !== 1) {
+            return redirect('/home')->with('error', 'Niets gevonden!');
+        }
+
+        return view('home.users')->with('users', $users);
+    }
+
 
 }

@@ -30,23 +30,8 @@ class PagesController extends Controller //elke controller moet een controller e
         return view('pages.services')->with('title', $title)->with('posts', $post);
     }
 
-    public function userlist() {
-        $users = User::all();
-
-        if(auth()->user()->admin !== 1) {
-            return redirect('/home')->with('error', 'Niets gevonden!');
-        }
-
-        return view('home.users')->with('users', $users);
-    }
-
-    public function favlist() {
-
-        $favourites = Favourite::all();
 
 
-        return view('home.fav')->with('favourite', $favourites);
-    }
 
 
 
