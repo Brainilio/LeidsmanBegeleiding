@@ -35,7 +35,11 @@ class FavController extends Controller
 
     public function showfavourite($id) {
 
-         $favourites = Favourite::where('user_id', auth()->user()->id)->get();
+         $fav = Favourite::where('user_id', $id)->get();
+
+
+
+        //  $favourites = Favourite::where('user_id', auth()->user()->id)->get();
 
         //  $post = Post::where('id', '19')->with(['favourites', 'id'])->get();
 
@@ -75,9 +79,7 @@ class FavController extends Controller
 
 
 
-        return view('home.fav')->with('favourite', $favourites);
-
-        // ->with('postname', $post);
+        return view('home.fav')->with('favourite', $fav);
     }
 }
 

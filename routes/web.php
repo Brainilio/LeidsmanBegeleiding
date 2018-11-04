@@ -51,7 +51,7 @@ Route::get('/home/users', 'PagesController@userlist');
 // Route voor fav dashboard
 Auth::routes();
 
-Route::get('/home/fav', 'FavController@showFavourite');
+Route::get('/home/fav/{id}', 'FavController@showFavourite');
 
 
 //Route voor het schakelen van status

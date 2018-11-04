@@ -26,19 +26,25 @@
                             <th>User.id</th>
                             <th>Favoriet.post.id</th>
                         </tr>
-                        @foreach($favourite->posts as $post)
+                        @foreach($favourite as $favourites)
                         <tr>
-                            {{-- <td>{{$favourites->id}}</td>
-                            <td>{{$favourites->user_id}}</td> --}}
-
-                            <td>{{$post->title}}</td>
+                            <td>{{$favourites->id}}</td>
+                            <td>{{$favourites->user_id}}</td>
+                            <td>{{$favourites->post_id}}</td>
 
                         </tr>
                         @endforeach
                     </table>
                     @else
-                    <h4>Geen Favorieten!</h4>
+                    <h4>Geen
+
+                        Favorieten!</h4>
                     @endif
+
+                    @foreach($favourite->posts as $post)
+                    <p>hoi</p>
+
+                    @endforeach
 
                     {{-- @if(count($postname) > 0)
                     @foreach($postname as $postnames)
