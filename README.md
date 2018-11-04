@@ -1,65 +1,34 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Voor local use: 
 
-## About Laravel
+[ Make sure to have composer installed ] 
+[ (restmigrations) in migrations zijn deletable migrations ( ik heb alle tables die ik daar heb toegevoegd
+gewoon in de normale create_table migrations gemaakt zodat hij alles in 1 x aanmaakt in plaats van in aparte batches ]
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+- In .env file is het mogelijk om je database naam en wachtwoord aan te passen naar jouw database.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Php artisan serve runnen
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+- SQL dump in sql database stoppen of Php artisan migrate runnen om alle batches te migraten 
 
-## Learning Laravel
+- Daarna php artisan db:seed runnen in command line om de database te seeden met 2 admins
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+Voor hosting: 
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+- Host aanmaken met naam en wachtwoord
+- Filezilla inloggen met je host naam en wachtwoord
+- SQL database aanmaken in je hosting panel
+- SQL file in SQL phpmyadmin uploaden @ hosting panel 
+- Heel je app uploaden in zelf aangemaakt folder op je filezilla BEHALVE DE PUBLIC FILE
+- Public file in public html folder uploaden
+- public/index.php  
+ 		require __dir__  op line 24 en require once dir op line 38 aanpassen en naar je aangemaakte folder linken.
+- in .env file db_database, db_username & db_password aanpassen naar jouw database, username & password op je hosting
+server
+- symlinkcreate.php aanmaken in je public_html stoppen en dan: 
+ <?php symlink('/home/naamdatabase/naamfolder/storage/app/public', '/home/naamdatabase/public_html/storage'); 
+- Op je browser zoeken naar /symlink.php en dan heb je je storage folder aangemaakt voor image uploading. 
+- Als je deze runt dan verdwijnt hij uit je ftp public_html folder en je hebt volledige access tot alles hierna.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
