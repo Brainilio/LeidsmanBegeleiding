@@ -16,8 +16,8 @@ class Favourite extends Model
         $this->belongsTo(User::class);
     }
 
-    public function post() {
-        $this->hasMany(Post::class);
+    public function posts() {
+        $this->belongsTo(Post::class);
     }
 
 

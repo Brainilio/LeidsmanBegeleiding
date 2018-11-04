@@ -24,6 +24,9 @@ Route::get('/services', 'PagesController@services');
 // Favorieten, zodra je op een post op favourite klikt, stopt hij dit in de favorieten en leidt hij je naar waar de controlle rje naar toe leidt
 Route::post('/', 'FavController@favourite');
 
+// Favorieten deleten
+Route::delete('home/{id}', 'FavController@destroy');
+
 // Resource controller voor CRUD
 Route::resource('posts', 'PostsController');
 

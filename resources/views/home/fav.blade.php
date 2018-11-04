@@ -23,14 +23,20 @@
                     <table class="table table-striped">
                         <tr>
                             <th>Favoriet.id</th>
-                            <th>User.id</th>
-                            <th>Favoriet.post.id</th>
+                            <th>Gebruiker naam</th>
+                            <th>Post naam</th>
+                            <th>Delete</th>
                         </tr>
                         @foreach($favourite as $favourites)
                         <tr>
                             <td>{{$favourites->id}}</td>
-                            <td>{{$favourites->user_id}}</td>
-                            <td>{{$favourites->post_id}}</td>
+                            <td>{{$favourites->name}}</td>
+                            <td>{{$favourites->title}}</td>
+                            <td> {{Form::open(['action' => ['FavController@destroy', $favourites->id], 'method' => 'POST'])}}
+                                    @csrf
+                                        {{Form::hidden('_method', 'DELETE')}}
+                                        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                                    {{Form::close()}}</td>
 
                         </tr>
                         @endforeach
@@ -40,22 +46,6 @@
 
                         Favorieten!</h4>
                     @endif
-
-                    @foreach($favourite->posts as $post)
-                    <p>hoi</p>
-
-                    @endforeach
-
-                    {{-- @if(count($postname) > 0)
-                    @foreach($postname as $postnames)
-                    <ul>
-                    <li>{{$postnames->title}}</li>
-                    </u>
-                    @endforeach
-                    @else
-                    <p>Geen titels</p>
-                    @endif --}}
-
 
                 </div>
             </div>

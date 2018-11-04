@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Post;
 use App\Favourite;
+use Illuminate\Support\Facades\Auth;
 
 class FavController extends Controller
 {
@@ -29,13 +30,40 @@ class FavController extends Controller
         $favourite->post_id = Post::find($request->id)->id;
         $favourite->save();
 
-        return redirect('home/fav')->with('success', 'Pakket gekocht!');
+        return redirect('home')->with('success', 'Favoriet toegevoegd!');
+
+    }
+
+    public function destroy($id)
+    {
+        $favourite = Favourite::find($id);
+
+        if(auth()->user()->id !== $favourite->user_id) {
+            return redirect('home')->with('error', 'Unauthorized!');
+
+        }
+
+        $favourite->delete();
+        return redirect('home')->with('success', 'Favourite removed!');
 
     }
 
     public function showfavourite($id) {
 
-         $fav = Favourite::where('user_id', $id)->get();
+
+        if(auth()->user()->id == $id) {
+            $favourites = DB::table('favourites')
+            ->join('posts', 'favourites.post_id', '=',  'posts.id')
+            ->join('users', 'favourites.user_id', '=', 'users.id')
+            ->where('users.id', '=', $id)
+            ->select('posts.title', 'users.name', 'favourites.*')
+            ->get();
+
+        return view('home.fav')->with('favourite', $favourites);
+
+        } else {
+            return redirect('/')->with('error', 'Unauthorized access');
+
 
 
 
@@ -79,7 +107,7 @@ class FavController extends Controller
 
 
 
-        return view('home.fav')->with('favourite', $fav);
+        }
     }
 }
 

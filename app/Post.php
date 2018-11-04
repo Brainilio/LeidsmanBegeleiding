@@ -15,8 +15,8 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function favourite() {
-        return $this->belongsToMany(Favourite::class);
+    public function favourites() {
+        return $this->hasMany(Favourite::class);
     }
 
     public function comments() {
