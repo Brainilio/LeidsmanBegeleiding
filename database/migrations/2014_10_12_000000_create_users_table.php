@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->tinyInteger('admin')->default('0');
+            $table->integer('logincounter')->unsigned()->default(0);
 
         });
     }
