@@ -6,7 +6,8 @@
 <a href="/posts" class="btn btn-default">Go back</a>
 <h1>{{$post->title}}</h1>
 @auth
-@if($days > 3)
+
+@if($days > 3 || Auth::user()->admin == 1)
 {{Form::open(['action' => ['FavController@favourite'], 'method' => 'POST', 'class' => 'float-right'])}}
 {{Form::hidden('id', $post->id)}}
 {{Form::submit('Favourite', ['class' => 'btn btn-success'])}}
@@ -14,6 +15,7 @@
 @else
 <h3>You have to wait {{ 3-$days }} more days to favourite!</h3>
 @endif
+
 @endauth
 <img width="500" height="500" src="/storage/cover_images/{{$post->cover_image}}">
     <div class="well container">
@@ -71,7 +73,7 @@
 
     @auth
 
-
+    @isset($userdays)
     @if($userdays > 3 || Auth::user()->admin == 1)
  {!! Form::open(['action' => ['CommentsController@store'], 'method' => 'POST']) !!}
  {{Form::hidden('post_id', $post->id)}}
@@ -94,6 +96,7 @@
         Sorry, jij mag pas over {{3-$userdays}} dagen commenten!
       </div>
 @endif
+@endisset
 
  @endauth
 

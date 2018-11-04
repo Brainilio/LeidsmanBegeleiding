@@ -49,7 +49,7 @@ Auth::routes();
 Route::get('/home/users', 'PagesController@userlist');
 
 // Route voor fav dashboard
-Auth::routegrou();
+Auth::routes();
 
 Route::get('/home/fav', 'FavController@showFavourite');
 

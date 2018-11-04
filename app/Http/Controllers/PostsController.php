@@ -8,6 +8,8 @@ use App\Post;
 use App\User;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
+use Illuminate\Support\Facades\Auth;
+
 
 class PostsController extends Controller
 {
@@ -102,6 +104,8 @@ class PostsController extends Controller
     {
         //zoeken naar post id
         $post = Post::find($id);
+
+        if(Auth::check()) {
         //zoeken naar user datum van registratie
         $user = auth()->user()->created_at;
 
@@ -126,13 +130,36 @@ class PostsController extends Controller
         //verschil in dagen tussen vandaag en sinds de user is geregistreerd
         $diff_in_days_user = $user1to->diffInDays($from);
 
-
-        $post =  Post::find($id);
-
         if($post->status == 0) {
             return redirect('posts')->with('error', 'Sorry, that post is not available');
         }
         return view('posts.show')->with('post', $post)->with('days', $diff_in_days)->with('userdays', $diff_in_days_user);
+
+    } else {
+
+
+
+           //maken van carbon van created_at in post
+           $post1 =  new Carbon($post->created_at);
+
+           //Carbon van datum/tijd van nu omzetten in andere formaat
+           $now = Carbon::now()->format('Y-m-d H:i:s');
+
+           //Omzetten van post_datum in andere formaat
+           $to = Carbon::createFromFormat('Y-m-d H:s:i', $post1);
+
+           //Omzetten van user_datum in andere formaat
+           $from = Carbon::createFromFormat('Y-m-d H:s:i', $now);
+
+           //verschil in dagen tussen vandaag en sinds de post is gemaakt
+           $diff_in_days = $to->diffInDays($from);
+
+           if($post->status == 0) {
+               return redirect('posts')->with('error', 'Sorry, that post is not available');
+           }
+           return view('posts.show')->with('post', $post)->with('days', $diff_in_days);
+
+    }
     }
 
     /**
