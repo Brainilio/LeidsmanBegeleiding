@@ -56,6 +56,7 @@ class FavController extends Controller
             ->join('posts', 'favourites.post_id', '=',  'posts.id')
             ->join('users', 'favourites.user_id', '=', 'users.id')
             ->where('users.id', '=', $id)
+            ->where('posts.status', '=', '1')
             ->select('posts.title', 'users.name', 'favourites.*')
             ->get();
 

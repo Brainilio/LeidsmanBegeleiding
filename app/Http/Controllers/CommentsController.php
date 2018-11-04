@@ -75,7 +75,10 @@ class CommentsController extends Controller
 
         if(auth()->user()->id == $id) {
             $comments = DB::table('comments')
-            ->where('user_id', $id)
+            ->join('posts', 'comments.post_id', '=', 'posts.id')
+            ->where('posts.status', '=', '1')
+            ->where('comments.user_id', $id)
+            ->select('comments.*')
             ->get();
 
 
