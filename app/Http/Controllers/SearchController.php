@@ -41,9 +41,3 @@ class SearchController extends Controller
 }
 
 
-
-// ->orWhere('created_at', 'LIKE', '%' .$search. "%")
-// ->orWhere('updated_at', 'LIKE', '%' .$search. "%")
-// ->orWhere('cover_image', 'LIKE', '%' .$search. "%")
-// ->orWhere('user_id', 'LIKE', '%' .$search. "%")
-// ->orWhere('id', 'LIKE', '%' .$search. "%")
