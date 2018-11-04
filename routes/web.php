@@ -56,6 +56,10 @@ Auth::routes();
 
 Route::get('/home/fav/{id}', 'FavController@showFavourite');
 
+//Route voor comment dashboard
+Auth::routes();
+Route::get('/home/comments/{id}', 'CommentsController@show');
+
 
 //Route voor het schakelen van status
 Auth::routes();

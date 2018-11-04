@@ -17,7 +17,7 @@
                     <a href="/posts/create" class="btn btn-primary">Maak nieuw pakket aan!</a>
                     <br>
                     <br>
-                    <h3>Aangemaakte pakketten</h3>
+                    <h3> Welkom {{Auth::user()->name }} dit zijn jouw aangemaakte pakketten!</h3>
                     @if(count($posts) > 0)
                     <table class="table table-striped">
                         <tr>
@@ -57,6 +57,9 @@
                     @else
                     <h4>Geen pakketten!</h4>
                     @endif
+
+                    @else
+                     <h2>Welkom {{Auth()->user()->name}}</h2>
                     @endif
 
 

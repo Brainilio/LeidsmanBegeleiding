@@ -6,6 +6,7 @@
 <div class="card-header"><a href="/home/users">Gebruikers<a></div>
 @endif
 
+<div class="card-header"><a href="/home/comments/{{Auth::user()->id}}">Comments<a></div>
 <div class="card-header"><a href="/home/edituser/{{Auth::user()->id}}">Wijzig profiel<a></div>
 
 

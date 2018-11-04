@@ -50,6 +50,9 @@ class FavController extends Controller
 
     public function showfavourite($id) {
 
+        if(Auth::guest()) {
+            return "hoi";
+        }
 
         if(auth()->user()->id == $id) {
             $favourites = DB::table('favourites')
@@ -66,6 +69,8 @@ class FavController extends Controller
 
 
 
+
+            // GEFAALDE POGINGEN
 
         //  $favourites = Favourite::where('user_id', auth()->user()->id)->get();
 

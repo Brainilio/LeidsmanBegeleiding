@@ -1,5 +1,4 @@
 
-
 @extends('layouts.app')
 
 @section('content')
@@ -18,33 +17,36 @@
 
 
 
-                    <h3>Jouw Favorieten </h3>
-                    @if(count($favourite) > 0)
+                    <h3>Jouw Comments </h3>
+                    @if(count($comments) > 0)
                     <table class="table table-striped">
                         <tr>
-                            <th>Favoriet.id</th>
+                            <th>Comment ID</th>
                             <th>Gebruiker naam</th>
-                            <th>Post naam</th>
+                            <th>Post Id</th>
+                            <th>Comment</th>
                             <th>Delete</th>
+
                         </tr>
-                        @foreach($favourite as $favourites)
+                        @foreach($comments as $comment)
                         <tr>
-                            <td>{{$favourites->id}}</td>
-                            <td>{{$favourites->name}}</td>
-                            <td><a href="/posts/{{$favourites->post_id}}">{{$favourites->title}}</a></td>
-                            <td> {{Form::open(['action' => ['FavController@destroy', $favourites->id], 'method' => 'POST'])}}
+                            <td>{{$comment->id}}</td>
+                            <td>{{$comment->name}}</td>
+                            <td><a href="/posts/{{$comment->post_id}}">{{$comment->post_id}}</a></td>
+                            <td>{{$comment->comment}}</td>
+                            <td> {{Form::open(['action' => ['CommentsController@destroy', $comment->id], 'method' => 'POST'])}}
                                     @csrf
                                         {{Form::hidden('_method', 'DELETE')}}
                                         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                     {{Form::close()}}</td>
+
 
                         </tr>
                         @endforeach
                     </table>
                     @else
                     <h4>Geen
-
-                        Favorieten!</h4>
+                        Comments!</h4>
                     @endif
 
                 </div>

@@ -9,9 +9,11 @@ use Carbon\CarbonInterval;
 use App\User;
 use App\Post;
 use App\Comment;
+use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -69,7 +71,18 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        //
+
+        if(auth()->user()->id == $id) {
+            $comments = DB::table('comments')
+            ->where('user_id', $id)
+            ->get();
+
+
+            return view('home.comments')->with('comments', $comments);
+        } else {
+            return redirect('/')->with('error', 'Unauthorized access');
+        }
+
     }
 
     /**
